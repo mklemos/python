@@ -1,0 +1,276 @@
+Notes - 01-27-15
+
+Simultaneous Assignment
+	<var>, <var>, <var> = <value>, <value>, <value>
+	example:
+		x,y,z=3,4,5
+	It truly is a simultatious action.
+
+Multiple Assignment
+	<var> = <var> = <var> = <var>
+	example:
+		a=b=c=5
+	In this situation, 5 is located in memory and the a,b,c all 
+	reference that location.
+ 
+Formated Output
+	% - to start each format string
+	  - to seperate the format from the values
+	print(<format string> % <values>)
+	example for format string above:		
+		"%<width>.<float precision><code>"
+		
+	<code>	
+		s - string
+		d - decimal (integer)
+		f - float
+		e - exponent form (scientific notation)
+		x - hex
+		%% - display one %
+		- - (minus sign) to left justify
+
+	example:
+		print("12345678901234567890")
+		print("%6d%4.1f%5s%-5d" % (1,1,"1",1))
+		in a field of 6 do an int
+		in a field of 4 do a float
+		in a field of 5 do a string
+		in a field of 5 do a left justify
+	run example:
+		123456|7890|12345|67890|
+		     1| 1.0|    1|1    |
+
+	example w/ words:
+		print("%3d is the answer to %7s" % (5, 'this'))
+	example:
+		t = "%6.1f%5x%9.2e"
+		a = 12
+		print(t % (a, a, a))
+	run example:
+			- represent spaces specified above
+		    --12.0----c-1.20e+01
+
+
+---------------------
+x=1
+while x < 5:
+	y=1
+	while y <=3:
+		print(x,y)
+	x=x+1
+print("that's all")
+
+
+result:
+
+x y
+1 1
+  2
+  3
+  4
+2 1
+  2
+
+output:
+	11
+	12
+	13
+	21
+	22
+	23
+
+--------------------------
+
+Line Continuation: mostly used for large tests
+\
+example:
+
+	print('that \
+	is all')
+run example:
+	that is all
+
+
+not needed:
+	-triple quotes
+		example: print ("""that
+			 is all""")
+		run example:
+			that
+			is all
+
+	- when enclosing symbols
+		example:
+			[],(),{}
+-----------------------------
+mutable - a value can be changed in place
+unmutabe - a value can NOT be changed in place
+sequence - an ordered group of items
+		can be indexed
+		string "Hi there"
+list - a sequence of arbitrary items enclosed in [] seperated by ,
+		[3,5,2]
+--------------------------------
+
+for loop - executes the body for each value in a sequence, hash, iterable, etc.
+
+for <var> in <sequence/iterable/hash>:
+	<statements>
+
+example:
+
+for i in [3,5,2]:
+	print(i)
+
+run example:
+3
+5
+2
+
+example:
+
+for a in "Hi there":
+	print(a)
+
+run example:
+
+H
+i
+
+t
+h
+e
+r
+e
+
+for a in "Hi there":
+        print(a, end=' ')
+
+run example:
+H i  t h e r e
+
+-------------------------------
+iterable - returns its values one at a time.
+
+range() - creates an iterable
+various forms of range:
+	range(<integer>) - returns that number of integers starting with 0
+		example:
+			range(5)
+		run example:
+			0 1 2 3 4
+	range(<start>,<end>)
+		example:
+			range(5,10)
+		run example:
+			5 6 7 8 9
+	range(<start>,<end>,<step>) - goes by the step and excludes the end
+		example:
+			range(5,17,3)
+		run example:
+			5 8 11 14
+each one of these could be a variable
+also these could go backwards as long as the start is larger than the end
+
+image of Chips example on phone
+------------------------------
+
+break - jumps out of the current loop beyond else
+
+for i in 'franklin':
+	print(i, end=' ')
+	if i == 'k':
+		break
+else:
+	print('ok finish')
+
+image on phone
+----------------------------
+
+continue - jumps to top of loop - example on phone
+pass - a no operation
+	example:
+if x <= 10:
+	pass
+else:
+	print("the value is too large")
+-----------------------------
+
+Strings
+-enclosable in single or double quotes
+	example:
+		place = "Dave's house"
+		greet = '''Fred's Food
+		12 Main St'''
+		print(greet)
+	run example:
+		Fred's Food
+		12 Main St
+<var>[<location>]
+	example:
+		print(place[2])
+	run example:
+		v
+----------------
+slice - taking part of a string
+	<var>[<start>:<end>]
+	end location is excluded
+example:
+print(place[1:4])
+run example:
+ave
+
+	<var>[<start>:<end>:<step>]
+example:
+print(place[1:10:2])
+run example:
+a e s h u
+
+*********************
+IDEA time: a program that asks the user to enter their name, however, if they do not
+capitalize their name the program saves the origial and creates a new one that capitalizes
+the name
+*********************
+
+print(len(place))
+
+print(place[:4])
+	dave
+print(place[7:])
+	house
+-------------------------
+
+STRING oerations
+
+len(<string>) - # characters in string
++ - concatenate
+* - repetition
+<value> in <string
+****picture example on phone
+		
+STRING methods:
+
+<varable>.<method>
+
+count(<substring>)
+find(<substring>)
+	returns location of the first find
+lower()
+upper()
+
+replace(<old_part_string>,<new_part_string>)
+	but strings are immutable
+
+print(a)
+	dog
+a.replace('d','fr')
+	'frog'
+print(a)
+	dog
+a = a.replace('d','fr')
+        'frog'
+print(a)
+	frog
+
+		
+

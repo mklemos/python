@@ -1,0 +1,178 @@
+
+
+lab4_5:
+
+total = 0
+for i in inven:
+	amount = inven[i]['quan']
+	value = inven[i]['price']
+	total = total + amount * value
+print(total)
+
+
+----------
+
+file output:
+	output strings
+	add \n to each
+	close the file
+
+<filevar> = open ("<actual file.ext>","w')
+<filevar>.write(<string>)
+<filevar>.close()
+
+Write the first 10 fib #s to a file.
+
+def storefib():
+	one=two=1
+	outfile=open("fib10.dat",'w')
+	for i in range(10):
+		if i < 2:
+			outfile.write(str(one)+'\n')
+		else:
+			result = one + two
+			outfile.write(str(result)+'\n')
+			one = two
+			two = result
+	outfile.close() 
+
+You can append to an existing file with the 'a' instead of 'w' for write and 'r' for read.
+
+myfile = open("fib10.dat",'a')
+myfile.write("89\n")
+myfile.close()
+-------------------
+
+more complicated output:
+
+output: "wb" as in write bit
+input: "rb" as in read bit
+
+output form:
+
+import pickle
+<filevar> = open('<filename.ext>','wb')
+pickle.dump(<data>,<filevar>)
+<filevar>.close()
+
+imput form:
+
+import pickle
+<filevar> = open('<filename.ext>','rb')
+<datavar> = pickle.load(<filevar>)
+<filevar>.close()
+
+example dictionary to use with pickle:
+
+mystuff = {'bob':'male','carol':"female','ted':'male','alice':'female'}
+
+import pickle
+outnames = open('fourpeople.dat','wb')
+pickle.dump(mystuff,outnames)
+outnames.close()
+
+-----------------
+
+OBJECT ORIENTED PYTHON:
+
+what components naurally relate, creating a hierachy of which fxns rely on other fxns.
+
+what naturally relates to that class. Not what your problem is today, but rather the stuff that make it complete and useful for all problems.
+
+---------
+each instance has its own data. each object has its own namespace. the class itself also has its own namespace.
+
+the data is always public, unlike c++ 
+
+store method and return method.
+
+*****************
+GENERAL FORM:
+
+class <Classname>():
+	<shared_var> = <value>
+	.
+	.
+	<methods>       <----instance data is defined (created) within a method
+	.
+	.
+	.
+***************
+self - an explicite parameter that identifies the invoking instance.
+     - don't pass anything in for it.
+     - may have a constructor for the class. unlike c++, __init__ is the name for all.
+
+<shared_var> can be used with <classname>.<shared_var>
+	in the case of the circle example the count of the amount of circles will be the <shared_var>
+***************
+  creating a circle class:
+
+class Circle():
+	count = 0
+	def __init__(self):
+		self.radius = 1
+		Circle.count = Circle.count + 1
+	def store_radius(self,r):
+		if r >= 0:
+			self.radius = r
+		else:
+			self.radius = -1 * r
+	def return_radius(self):
+		return self.radius
+	def calc_area(self):
+		return 3.14 * self.radius ** 2
+	def calc_cir(self):
+		return 2 * 3.14 * self.radius
+
+*************
+
+in the terminal:
+
+from Circle_Class import *
+>>> cir1 = Circle()
+>>> cir2 = Circle()
+>>> type(cir1)
+<class 'Circle_Class.Circle'>
+>>> cir2.store_radius(5)
+>>> print(cir2.calc_area())
+78.5
+>>> print(cir1.calc_area())
+3.14
+>>> print(Circle.count)
+2
+>>> 
+>>> cir3 = Circle()
+>>> cir3.store_radius(-2)
+>>> print(cir3.return_radius())
+2
+>>> 
+
+***********************
+
+more complicated constructor - everything else is the same, just the constructor makes a unit circle:
+
+class Circle():
+        count = 0
+        def __init__(self,r=1):
+		if r >=0:
+			self.radius = r
+		else:
+                	self.radius = -1 * r
+                Circle.count = Circle.count + 1
+        def store_radius(self,r):
+                if r >= 0:
+                        self.radius = r
+                else:
+                        self.radius = -1 * r
+        def return_radius(self):
+                return self.radius
+        def calc_area(self):
+                return 3.14 * self.radius ** 2
+        def calc_cir(self):
+                return 2 * 3.14 * self.radius
+
+**************
+from <python_class_file> import *
+example:
+	from Circle_Class import *
+

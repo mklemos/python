@@ -1,0 +1,243 @@
+Employee class example pictures taken look to phone
+
+overloading operators.
+
++ works differently with ints vs. strings
+this is overloading the plus. strings append ints get summed.
+
+we can do the same for our own classes. Generally this is done for mathmatical natured classes.
+
+some operators:
+
++  __add__(self, <value>)
+*  __mul__(self, <value>)
+** __pow__(self, <value>)
+len(<value>) __len__(self)
+<var>[<loc>]=<value> __setitem__(self, <loc>, <value>)
+del <var>[<loc>] __delitem__(self, <loc>)
+
+
+supposing I wanted to have a string class that is mutable:
+create a class that gives the user the experience of having mutable strings.
+
+example is located on the t-drive.
+
+class Mutstr():
+	def __init__(self, st=""):
+		self.str = st
+
+	def change(self, loc, st):
+		if loc < len(self.str):
+			temp1 = self.str[0:loc]
+			temp2 = self.str[loc+1: ]
+			self.str = temp1 + st + temp2
+		if len(self.str) == 0:
+			self.str=st
+
+	def get(self):
+		return self.str
+
+	def __add__(self, more):
+		self.str = self.str + more
+	
+	def __setitem__(self, loc, value):
+		if loc < len(self.str):
+			temp1 = self.str[0:loc]
+			temp2 = self.str[loc+1: ]
+			self.str = temp1 + value + temp2
+		if len (self.str) == 0:
+			self.str = value
+
+this is a run of both mutstring.py and mutstring1.py of above:
+	
+>>> 
+>>> from mutstring import *
+>>> one = Mutstr()
+>>> two = Mutstr("thisisit")
+>>> print(one.get(), "|", two.get())
+ | thisisit
+>>> one.change(0, "hi there")
+>>> two.change(2, 'u')
+>>> print(one.get(), "|", two.get())
+hi there | thusisit
+>>> one + " how are you"
+>>> print(one.get(), "|", two.get())
+hi there how are you | thusisit
+>>> two[2] = 'em'
+>>> print(one.get(), "|", two.get())
+hi there how are you | themsisit
+>>> ================================ RESTART ================================
+>>> 
+>>> from mutstring1 import *
+>>> one = Mutstr()
+>>> two = Mutstr("thisisit")
+>>> one + " how are you"
+>>> two[2] = 'em'
+>>> print(one.get(), "|", two.get())
+ how are you | themsisit
+>>> 
+
+------------------
+
+inheritance:
+	a new class (child, subclass)
+	defined in terms of an existing class (parent, superclass)
+
+	unlike c++ a child class can only descend from one arent in python you can have multiple parent classes.
+
+FORM:
+	class <Child> (<Parent1>, <Parent2>):
+
+Higherarchy:
+	the first parent will be used first before moving on the the second parent.
+
+flowchart:
+
+Grand1            Grand2
+  |                 |
+Parent1          Parent2
+	    |
+	  Child
+	    |
+	Instance
+
+Instance > Child > Parent1 > Grand1 > Parent2 > Grand2
+
+----
+recording: 34.00 on evernote
+----
+class Parent():
+	def delegate(self):
+		self.doit()
+	.
+	.
+	.
+class Child(Parent):
+	def doit(self):
+		.
+		.
+		.
+		.
+
+RUN:
+	x = Child()
+	x.delegate()
+
+-----------------------
+shape class examples(37:00):
+
+
+		Parallel
+		   |
+	Rectangle      Rhombus (all four sides same length, not 90deg)
+		   |
+		Square
+
+
+sin = opposite/hypotenuse
+
+hyp * sin = opposite
+
+360deg = 2pi
+180 = pi
+
+deg/180 = rad/pi
+
+deg * pi/180 = rad
+
+CODE:
+to keep it simple the constructor will provide the data. there are no store ruitines here.
+
+class Parallel():
+	count = 0
+	def __init__(self, l=0, w=0, ang=0):
+		self.length = l  #this should have a check to make sure positiv)		
+		self.width = w
+		self.angle = ang
+		Parallel.count = Parallel.count + 1
+	def perimeter(self):
+		print("par-perim")
+		return 2 * self.length + 2 * self.width
+	def area(self):
+		import math #while in a method you cannot use the from math import form
+		rad = self.angle * math.pi/180
+		height = math.sin(rad)*self.width
+		ar = height * self.length
+		print("par-area")
+		return ar
+class Rectangle(Parallel):
+	def __init__(self, l=0, w=0):
+		self.length=l
+		self.width=w
+		parallel.count += 1
+	def area(self):
+		print("rec-area")
+		return self.length * self.width
+class Rhombus(Parallel):
+	def __init__(self, side = 0, ang = 0):
+		self.width = side
+		self.length = side
+		self.angle = ang
+		Parallel.count += 1
+	def perimeter(self):
+		print("Rhom-perim")
+		return 4 * self.length
+class Square(Rectangle, Rhombus):
+	def __init__(self, side = 0):
+		self.length = side
+		self.width = side
+		Parallel.count += 1
+
+RUN:
+
+>>> 
+>>> from geometric import *
+>>> x = Parallel(10,5,30)
+>>> y = Rectangle(4,50)
+>>> z = Rhombus(10, 20)
+>>> w = Square(7)
+>>> x.area
+<bound method Parallel.area of <geometric.Parallel object at 0x105a3fbe0>>
+>>> x.area()
+par-area
+24.999999999999996
+>>> y.area()
+rec-area
+200
+>>> z.area()
+par-area
+34.20201433256687
+>>> w.area()
+rec-area
+49
+>>> 
+
+----------------------------------------------------
+midterm on thursday april 2nd, due to ceasar chavez day on the 31st (60min mark)
+
+from lab 5 on to lab 8:
+
+topics:
+	sets
+	fxns
+		recursion
+	importing vs. executing your own module
+		if __name__ == "__main__":
+			function()
+	generator function - yeild
+		lambda function
+	file input 
+		strings (to do math you have to eval)
+	Pickel question 
+	file output
+	classes
+	operator overloading
+	class inhertitance
+	method overiding 
+	random
+
+------------------------------------------------------
+
+assignment due thursday lab 8
+
+

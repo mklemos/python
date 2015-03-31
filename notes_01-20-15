@@ -1,0 +1,290 @@
+Introduction
+	Syllabus handed out
+	Ceasar chavez day messes up our schedule so we have to skip straight to the lecture.
+	Named after monty python not the snake
+	python.org v3+
+readability
+	not bogged down by semicolons
+	ease of development
+	python programs a third of the size of c++ programs
+dynamic typing
+	you dont have to declare a variable before you type it.
+automatic memory managment
+	garbage collection - memory is freed up for you to use.
+	unlike c++ were linked lists need to be cleared out etc
+object-oriented support
+database interfaces
+operating system support
+GUI interfaces
+Backus-Naur form (example: http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form)
+	token
+		ending or terminal value
+		non-terminal symbol
+			further defined
+			<>
+			production
+				the further refinement
+			syntax:
+				::=
+				<>
+				|
+			EXAMPLE: How to define a sentence
+			<sentence> ::= <noun phrase><verb><noun phrase>
+			<noun phrase> ::= <article><noun>
+			<article> ::= a | the
+			<noun> ::= girl | dog
+			<verb> ::= sees | pets
+			
+			<sentence> ::= <noun phrase><verb><noun phrase>
+				       <article><noun><verb><article><noun>
+				           a     girl  pets     a     dog
+
+PYTHON SYNTAX:
+	assignment:
+		<variable> ::= <expression>
+		<var1>,<var2>,...<varN> = <expr1>,<expr2>,...<exprN>
+	print function:
+		print (<expr>)
+		print (<expr1>,<expr2>,...,<expr3>)
+		print (<expr1>,<expr2>,...,end=' ')
+
+	running python
+		from the interactive command line
+		python shell
+		IDLE
+			python ide
+			run module
+	comment
+	# to the end of the line
+	
+	identifier
+		starts with letter (or underscore)
+		they may have letters, digits, underscores
+		is case sensative
+			all different:
+					cat
+					Cat
+					CAT
+		x=12
+		y=3.2
+		z=x*y
+		print(x,y,z)
+
+		x = 10000
+		x is tagged to the spot that 10000 sits
+		y = x
+		x = 500
+		y = 1200
+		x is tagged to 500
+		y is tagged to 1200
+		y = 3.2
+		y is then tagged to the location in memory that holds the 3.2
+		
+
+	type:
+ 		z = 3.2
+		print(type(z))
+		result:
+			<class 'float'>
+
+	numeric types
+		int
+		float
+		complex
+		bool
+			example:
+				a=True
+				print(type(a))
+				<class 'bool'>
+
+	common math operators
+		+
+		-
+		*
+		/ - floating point
+		// - truncated (to floor) division
+		** - power
+	NOT in python:
+		increment
+		++
+		decrement
+		--	
+	
+	built in math fxns:
+		abs(<expr>) - absolute value
+		round(<var>,<decimal places>)
+		sum (<group of numbers>)
+		 
+	other math fxns:
+		import <module>
+		example:
+			import math
+			use math.<function>
+				pi
+				e
+				sin(), cos(), tan()
+				asin(), acos(), atan()
+				log(), exp() - both base e
+				log10() - base 10
+				ceil() - whole numbers returned
+				floor() - whole numbers returned
+				sqrt()
+
+	convert one data type to another:
+					float to int:
+					float(<int>)
+					int to float
+					int(<float>)
+
+		example:
+			a = 6
+			b = 4 * float(a)
+			print(b, type(b))
+			24.0 <class 'float'>
+	
+	random library:
+		import random
+		random() - returns value between 0 and < 1
+		a = random.random()
+		
+
+		randrange(int1, int2, step) - returns random integer from int1 to < int2 by steps
+		x = random.randrange(1,10,3)
+	
+		randint(int1, int2) - returns a random integer between int1 and int2 
+					(unlike above it includes the top range)
+ 	
+
+decisions:
+		
+if statement
+indentation must be perfect line by line
+
+example:
+if <expr>:
+	<statement>
+	<statement>
+	.
+	.
+	.
+	.
+
+comparisons
+< 
+<=
+>
+>=
+==
+!=
+
+if x <= y:
+	print("I will double x")
+	x=2*x
+
+operators
+	and (will be on the hw)
+	or
+	not
+
+example:
+
+if <expr>:
+	.
+	.
+	.
+	<statements>
+	.
+	.
+	.
+else:
+	.
+	.
+	.
+	<statements>
+	.
+	.
+	.
+
+example:
+	
+if/elif/else
+
+if <expr>:
+        .
+        .
+        .
+        <statements>
+        .
+        .
+        .
+elif <expr>:
+        .
+        .
+        .
+        <statements>
+        .
+        .
+        .
+else <expr>:
+        .
+        .
+        .
+        <statements>
+        .
+        .
+        .
+
+example:
+
+score = 77
+
+if score >= 90
+        .
+        .
+        .
+        <statements>
+        .
+        .
+        .
+****** (unfinished example) ask professor ******
+
+
+loops:
+
+
+while loop:
+
+while <expr>:
+        .
+        .
+        .
+        <statements>
+        .
+        .
+        .
+else:
+	.
+	.
+	.
+	<statements>
+	.
+	.
+	.
+
+
+example:
+
+a = 7
+
+while a < 100:
+	a = a+7
+	print(a)
+else:
+	print("the end")
+
+
+
+
+
+HW/LAB notes:
+

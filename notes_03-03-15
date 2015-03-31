@@ -1,0 +1,172 @@
+By failing to prepare you are preparing to fail. - Benjamin Franklin
+
+no fxn overloading in python.
+
+def earnings()
+	.
+	.
+	.
+def gross(x,y)
+	.
+	.
+	.
+earnings()
+
+Above will run, executing the fxn because it's the last item.
+
+Importing Modules:
+So far we have imported Math.
+but what about our own.
+
+execute now or wait on module using a system variable.
+__name__                       #two underscores on either side
+The above identifies the state of the module
+
+an import will be the module doing the Run/Rn module its called "__main__"
+
+def earnings()
+        .
+        .
+        .
+def gross(x,y)
+        .
+        .
+        .
+if __name__=="__main__":
+	earnings()
+
+--------------------------
+
+generator function
+
+uses the word yield.
+
+its like a pause in the function, it returns a value, and the next call will continue where it left off.
+
+The very first call just creates the process.
+
+example:
+
+def count(x):
+	yield x
+	yield x//2
+	yield x//3
+	yield x//4
+
+c = count(12)
+>>>next(c)
+12
+>>>next(c)
+6
+>>>next(c)
+4
+>>>next(c)
+3
+
+
+example:
+
+def yieldtest(x):
+	for i in x:
+		if i % 2 == 0:
+			yield 10 * i
+
+def yieldtest(x):
+        for i in x:
+		if i % 2 == 0:
+			yield 10 * i
+		else:
+			yield i
+
+------------------------------------
+
+lambda function:
+a small fxn without a name
+
+assign a name to it.
+
+lambda <peram1>,<peram2> : <expression>
+
+example:
+
+c = lambda a,b: (a+b)/2
+
+c(1,6)
+3.5
+
+sepcialized if/else form for lambda:
+<true answer> if <test> else <false answer>
+
+example:
+x = lambda a,b a if a<b else b
+x(3,7)
+3
+x(10,6)
+6
+
+-------------------------------
+File input:
+a file consists of lines of strings.      <--------- includes \n at the end of each line
+
+order of operations:
+1) open file
+2) read data from the file
+	a) when file ends (reading it) it returns an empty string "".
+3) close the file
+
+1)
+<filevar> = open("<filename.ext>", 'r')        <----- r stands for read and specificly needed for reading the file.
+
+2)
+option 2a: <var> = <filevar>.read()                  <------ reads the entire file
+option 2b: <var> = <filevar>.readlines()            <------ creates a list of lines of the entire file
+option 2c: <var> = <filevar>.readline()            <------ reads one line of the file (usually in a loop)(prefered method
+
+3)
+<filevar>.close()
+
+
+examples:
+
+myfile = open("int1.dat", 'r')
+
+i = "*"
+while i != "":
+	i = myfile.readline()
+	print(i, type(i))
+
+
+for i in myfile:
+	print(i,type(i),end=' ')
+
+above accounts for the lines by using end=' '
+
+for i in myfile:
+        print(i,type(i)) 
+
+for i in myfile:
+        j = int(i)
+	print(j, type(j), end = ' ')
+
+
+sidenote: i[:-1]      <---- throws away last character
+
+for i in myfile:
+        j = i[:-1]
+        print(j, type(j), end = ' ')
+
+--------
+getting the final line to play nice:
+
+.rstrip()
+	- strips \n at the end if its there.
+.strip()
+	- strips a white space at both ends if there.
+--------------
+pictures taken in lecture look to phone.
+
+---------------
+
+is  and ==
+
+
